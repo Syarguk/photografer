@@ -322,8 +322,87 @@ h1 {
 }
     /* portfolio section end */
     /* video section */
-
-.section-video {
+.wrap-video-player {
+    position: relative;
+    border: #ccc solid 2px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+.video-item {
+    padding-top: 46.15%;
+}
+.video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+}
+.general-play-button {
+    position: absolute;
+    left: 44%;
+    top: 40%;
+    z-index: 10;
+    width: 150px;
+    height: 150px;
+    background-image: url("assets/svg/play-btn.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 0;
+    transition: 0.5s;
+}
+.general-play-button:hover {
+    filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%) contrast(87%);
+}
+.player-controls {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+.player-controls button {
+    width: 55px;
+    height: 55px;
+    border: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent;
+    margin-right: 15px;
+}
+.player-controls input {
+    background: linear-gradient(to right, #BDAE82 0%, #BDAE82 30%, #fff 30%, #fff 100%);
+    height: 10px;
+    border-radius: 2px;
+    -webkit-appearance: none;
+}
+.player-controls input::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    -webkit-appearance: none;
+    cursor: ew-resize;
+    background: #afafaf;
+}
+.play-active-button {
+    background-image: url("assets/svg/play.svg");
+}
+.pause-active-button {
+    background-image: url("assets/svg/pause.svg");
+}
+.play-progress {
+    width: 70%;
+    margin-right: 25px;
+}
+.on-volume-button {
+    background-image: url("assets/svg/volume.svg");
+}
+.off-volume-button {
+    background-image: url("assets/svg/mute.svg");
+}
+.volume-control {
+    width: 16%;
+}
+/* .section-video {
     padding-top: 100px;
 }
 .video-player {
@@ -346,7 +425,7 @@ h1 {
 }
 .video-player button:hover {
     filter: var(--filter-svg);
-}
+} */
     /* video section end */
     /* price section */
 .section-price {

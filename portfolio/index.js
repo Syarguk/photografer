@@ -134,3 +134,103 @@ import i18Obj from './js/translate.js';
   switchThemeIcon.addEventListener('click', switchTheme);
   switchThemeIcon.addEventListener('click', setLocalStorage);
   window.addEventListener('load', getLocalStorage);
+
+  /* video player */
+
+  const playPause = document.querySelector('.player-controls button:first-child');
+  const progress = document.querySelectorAll('.player-controls input');
+  const myVid = document.querySelector('video');
+  const playProgress = document.querySelector('.play-progress');
+  const generalPlayButt = document.querySelector('.general-play-button');
+  const volumeButton = document.querySelector('.on-volume-button');
+  const volumeSlider = document.querySelector('.volume-control');
+  
+  playProgress.addEventListener('mousedown', () => clearInterval(progression));
+  playProgress.addEventListener('mouseup', () => progression = window.setInterval(updateProgress, 200));
+  myVid.addEventListener('timeupdate', () => {
+    if(myVid.ended) {
+      playPause.classList.remove('pause-active-button');
+      playPause.classList.add('play-active-button');
+      generalPlayButt.style.display = 'inline-block';
+    }})
+  volumeSlider.addEventListener('click', volumeRangeUpdate);
+  volumeSlider.addEventListener('mousemove', volumeRangeUpdate);
+  volumeButton.addEventListener('click', changeVolumeButt);
+  generalPlayButt.addEventListener('click', toogleVideo);
+  playProgress.addEventListener('click', updateVideoProgress);
+  playPause.addEventListener('click', toogleVideo);
+  progress.forEach(function(item) {
+    item.addEventListener('input', function() {
+      const value = this.value;
+      this.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${value}%, #fff ${value}%, white 100%)`;
+  })});
+  let progression;
+  function toogleVideo() {
+    if(myVid.paused) {
+      myVid.play();
+      generalPlayButt.style.display = 'none';
+      progression = window.setInterval(updateProgress, 900);
+      checkButtonPlayPause();
+    } else {
+      myVid.pause();
+      generalPlayButt.style.display = 'inline-block';
+      clearInterval(progression);
+      checkButtonPlayPause();
+    }
+  }
+  function checkButtonPlayPause() {
+    if(playPause.classList.contains('play-active-button')) {
+      playPause.classList.add('pause-active-button');
+      playPause.classList.remove('play-active-button');
+      return;
+    }
+    if(playPause.classList.contains('pause-active-button')) {
+      playPause.classList.add('play-active-button');
+      playPause.classList.remove('pause-active-button');
+    }
+  }
+  function updateProgress() {
+    let progress = myVid.currentTime / myVid.duration;
+    let playTime = Math.floor(progress *1000) / 10;
+    playProgress.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${playTime}%, #fff ${playTime}%, white 100%)`;
+    playProgress.setAttribute('value', playTime);
+  }
+  function updateVideoProgress() {
+    let newCurrTime = (Math.floor(myVid.duration) / 100) * this.value;
+    myVid.currentTime = newCurrTime;
+  }
+  function changeVolumeButt() {
+    if(volumeButton.classList.contains('on-volume-button')) {
+      volumeButton.classList.remove('on-volume-button');
+      volumeButton.classList.add('off-volume-button');
+      updateProgressVolume();
+      return;
+    } else {
+      volumeButton.classList.remove('off-volume-button');
+      volumeButton.classList.add('on-volume-button');
+      updateProgressVolume();
+    }
+  }
+  function volumeRangeUpdate() {
+    let volumeRange = this.value / 100;
+    myVid.volume = volumeRange;
+    if(myVid.volume == 0) {
+      volumeButton.classList.remove('on-volume-button');
+      volumeButton.classList.add('off-volume-button');
+    } else {
+      volumeButton.classList.remove('off-volume-button');
+      volumeButton.classList.add('on-volume-button');
+    }
+  }
+  function updateProgressVolume() {
+    if(volumeButton.classList.contains('off-volume-button')){
+      myVid.volume = 0;
+      volumeSlider.value = 0;
+      volumeSlider.style.background = 'linear-gradient(to right, #BDAE82 0%, #BDAE82 0%, #fff 0%, white 100%)';
+    }
+    if(volumeButton.classList.contains('on-volume-button')) {
+      myVid.volume = 0.5;
+      volumeSlider.value = 30;
+      volumeSlider.style.background = 'linear-gradient(to right, #BDAE82 0%, #BDAE82 30%, #fff 30%, white 100%)';
+    }
+  }
