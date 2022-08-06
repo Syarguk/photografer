@@ -322,6 +322,9 @@ h1 {
 }
     /* portfolio section end */
     /* video section */
+.section-video {
+    padding-top: 100px;
+}
 .wrap-video-player {
     position: relative;
     border: #ccc solid 2px;
@@ -402,30 +405,6 @@ h1 {
 .volume-control {
     width: 16%;
 }
-/* .section-video {
-    padding-top: 100px;
-}
-.video-player {
-    position: relative;
-    margin-top: 60px;
-    height: 705px;
-    background-image: url("assets/img/video-player.jpg");
-}
-.video-player button {
-    position: absolute;
-    top: 43%;
-    left: 45%;
-    width: 10%;
-    border: none;
-    background: transparent;
-    transition: 0.3s;
-}
-.video-player button img {
-    width: 100%;
-}
-.video-player button:hover {
-    filter: var(--filter-svg);
-} */
     /* video section end */
     /* price section */
 .section-price {
@@ -607,6 +586,12 @@ footer a {
     .section-title-lines::after {
         width: 25%;
     }
+    .general-play-button {
+        width: 130px;
+        height: 130px;
+        left: 41.5%;
+        top: 38%;
+    }
 }
 @media (max-width: 890px) {
     .navigation, .switch-lng {
@@ -623,6 +608,12 @@ footer a {
     }
     .skill-item {
         width: 47%;
+    }
+    .general-play-button {
+        width: 120px;
+        height: 120px;
+        left: 41%;
+        top: 35%;
     }
 }
 @media (max-width: 768px) {
@@ -752,8 +743,7 @@ footer a {
         background-position: center bottom;
     }
     .video-player {
-        height: 440px;
-        margin-top: 49px;
+        margin-top: 0px;
         background-image: none;
     }
     .video-player button {
@@ -763,6 +753,10 @@ footer a {
     }
     .video-player img {
         display: block;
+    }
+    .general-play-button {
+        width: 100px;
+        height: 100px;
     }
     
     /* section price */
@@ -838,8 +832,9 @@ footer a {
     .video-container {
         background-size: 620px;
     }
-    .video-player {
-        height: 350px;
+    .general-play-button {
+        width: 80px;
+        height: 80px;
     }
     .contacts-container {
         width: 400px;
@@ -854,6 +849,10 @@ footer a {
     }
     .portfolio-items img {
         width: 100%;
+    }
+    .general-play-button {
+        width: 60px;
+        height: 60px;
     }
     .price-item {
         width: 80%;
