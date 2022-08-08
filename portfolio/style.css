@@ -836,6 +836,14 @@ footer a {
         width: 80px;
         height: 80px;
     }
+    .player-controls button {
+        width: 50px;
+        height: 40px;
+        background-size: auto 70%;
+    }
+    .player-controls input {
+        height: 8px;
+    }
     .contacts-container {
         width: 400px;
     }
@@ -853,6 +861,16 @@ footer a {
     .general-play-button {
         width: 60px;
         height: 60px;
+    }
+    .player-controls button {
+        background-size: auto 50%;
+        margin-right: 0;
+    }
+    .player-controls input {
+        height: 5px;
+    }
+    .play-progress {
+        margin-right: 5px;
     }
     .price-item {
         width: 80%;

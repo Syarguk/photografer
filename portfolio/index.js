@@ -1,4 +1,3 @@
-console.log("1. Смена изображений в секции portfolio +25\n2. Перевод страницы на два языка +25\n3. Переключение светлой и тёмной темы +25\n4. Дополнительный функционал: выбранный пользователем язык отображения страницы и светлая или тёмная тема сохраняются при перезагрузке страницы +5");
 import i18Obj from './js/translate.js';
 /* Hamberger menu */
   const hamburgerIcon = document.getElementById('hamburger');
@@ -234,3 +233,7 @@ import i18Obj from './js/translate.js';
       volumeSlider.style.background = 'linear-gradient(to right, #BDAE82 0%, #BDAE82 30%, #fff 30%, white 100%)';
     }
   }
+/* scroll page */
+const sectionContact = document.querySelector('.contact-container');
+const heroContButton = document.querySelector('.section-hero button');
+heroContButton.addEventListener("click", () => sectionContact.scrollIntoView());
